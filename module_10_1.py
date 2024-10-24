@@ -1,6 +1,6 @@
-import time
 from threading import Thread
 from time import sleep
+from datetime import datetime
 
 
 def write_words(word_count, file_name):
@@ -11,17 +11,17 @@ def write_words(word_count, file_name):
     print(f'Завершилась запись в файл {file_name}')
 
 
-start_time = time.time()
+start_time = datetime.now()
 
 write_words(10, 'exemple1.txt')
 write_words(30, 'example2.txt')
 write_words(200, 'example3.txt')
 write_words(100, 'example4.txt')
 
-end_time = time.time()
+end_time = datetime.now()
 print(f'Работа потоков {end_time - start_time}')
 
-start_thread_time = time.time()
+start_thread_time = datetime.now()
 
 threads = []
 threading_first = Thread(target=write_words, args=(10, 'example5.txt'))
@@ -39,5 +39,5 @@ threading_second.join()
 threading_third.join()
 threading_fourth.join()
 
-end_time = time.time()
-print(f'Работа потоков {end_time - start_time}')
+end_thread_time = datetime.now()
+print(f'Работа потоков {end_thread_time - start_thread_time}')
